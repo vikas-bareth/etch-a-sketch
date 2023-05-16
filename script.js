@@ -95,4 +95,26 @@ function activateButton(newMode){
     }
 }
 
+function changeColor(e){
+    if (e.type === 'mouseover' && !mouseDown) return
+    if(currentMode === 'rainbow'){
+        const randomR = Math.floor(Math.random() * 256)
+        const randomG = Math.floor(Math.random() * 256)
+        const randomB = Math.floor(Math.random() * 256)
+        e.target.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`
+    }
+    else if(currentMode === 'color'){
+        e.target.style.backgroundColor = currentColor
+    }
+    else if(currentMode === 'eraser'){
+        e.target.style.backgroundColor = '#fefefe'
+    }
+    
+}
+
+
+window.onload = () => {
+    setupGrid(DEFAULT_SIZE)
+    activateButton(DEFAULT_MODE)
+  }
 
